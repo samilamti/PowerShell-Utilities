@@ -1,0 +1,15 @@
+# Specifies a path to one or more locations.
+[CmdletBinding()]
+param (
+    [Parameter(Mandatory=$true,
+    Position=0,
+    ParameterSetName="ParameterSetName",
+    ValueFromPipeline=$true,
+    ValueFromPipelineByPropertyName=$true,
+    HelpMessage="Path to one or more locations.")]
+    [Alias("PSPath")]
+    [ValidateNotNullOrEmpty()]
+    [string[]]
+    $ExecPath
+)
+runas /env /user:$ENV:USERDOMAIN\$ENV:USERNAME $ExecPath
